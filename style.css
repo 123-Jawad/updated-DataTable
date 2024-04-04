@@ -12,7 +12,7 @@ body {
   overflow: auto;
   margin-top: 10% !important;
   width: 90%;
-  height: 450px;
+  height: auto;
   margin: 0px;
   scrollbar-width: thin;
   background-color: white;
@@ -21,29 +21,41 @@ body {
   position: sticky;
   z-index: 1;
   left: -16px;
+  border: none;
+}
+#main-heading{
+  position: absolute;
+  left: 40%;
+  top: 8%;
+  font-family: "Libre Baskerville", serif;
+  font-size: 35px;
 }
 .actions {
   position: sticky;
   z-index: 1;
+  border: none;
 }
 td.actions {
   background-color: white;
 }
 
 tr:hover {
-  background-color: #b261e8;
+  background-color: #5b5c5e;
   color: white;
 }
 tr:hover td.selectoption{
-  background-color: #b261e8;
+  background-color: #5b5c5e;
   color: white;
   z-index: 20;
 }
 td.selectoption {
-  background-color: #e1d1eb;
+  background-color: #eeeeee;
 }
 td.selectoption:hover {
   background-color: #eeeeee;
+}
+td{
+  border: 1px solid rgb(187, 186, 186);
 }
 table {
   border-collapse: collapse;
@@ -82,7 +94,7 @@ table {
   padding: 8px;
   min-width: max-content;
   height: 50px;
-  color: blueviolet;
+  color: #222831;
   border: none;
   border-bottom: 1px solid rgb(188, 184, 184);
   cursor: pointer;
@@ -98,18 +110,18 @@ tbody tr:nth-last-child(-n + 3) .content {
   margin-top: -180px;
 }
 .content button:hover {
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
 }
 span {
   padding-right: 85px;
-  font-size: 15px;
+  font-size: 25px;
 }
 th {
   padding: 12px;
   font-size: 15px;
   color: white;
-  background-color: blueviolet;
+  background-color: #222831;
   text-transform: capitalize;
 }
 .tooltip {
@@ -127,22 +139,22 @@ td {
 #check {
   width: 20px;
   height: 50px;
-  color: blueviolet;
+  color: #222831;
 }
 #button {
   cursor: pointer;
   border-radius: 8px;
-  border: 1px solid blueviolet;
+  border: 1px solid #222831;
   padding: 10px;
-  color: blueviolet;
+  color: #222831;
   text-transform: capitalize;
 }
 #button:hover {
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
 }
 input[type="checkbox"] {
-  accent-color: blueviolet;
+  accent-color: #222831;
 }
 
 ::placeholder{
@@ -231,7 +243,7 @@ textarea {
 }
 
 button[type="submit"] {
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -240,10 +252,10 @@ button[type="submit"] {
 }
 
 button[type="newsubmit"]:hover {
-  background-color: #b261e8;
+  background-color: #5b5c5e;
 }
 button[type="newsubmit"] {
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -252,7 +264,7 @@ button[type="newsubmit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #b261e8;
+  background-color: #5b5c5e;
 }
 
 /* end modal */
@@ -283,16 +295,19 @@ button[type="submit"]:hover {
 }
 
 #addColumnBtn {
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
   border: none;
+  position: absolute;
+  left: 75%;
+  top: 10%;
   padding: 10px 10px;
   cursor: pointer;
 }
 
 #addColumnBtn:hover {
   color: white;
-  background-color: #b261e8;
+  background-color: #5b5c5e;
 
 }
 /* Add column end */
@@ -314,7 +329,7 @@ button[type="submit"]:hover {
   position: absolute;
   left: -25%;
   margin-top: 5px;
-  color: blueviolet;
+  color: #222831;
 }
 
 /* logout and Register button  */
@@ -322,28 +337,30 @@ button[type="submit"]:hover {
   height: 40px;
   width: 20%;
   position: absolute;
-  left: 75%;
-  top: 5%;
+  left: 80%;
+  top: 15%;
 }
 #log{
   width: 48%;
   padding: 10px;
   border-radius: 30px;
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
   border: none;
+  position: absolute;
+  left: 25%;
   cursor: pointer;
   font-size: 15px;
 }
 #log:hover{
-  background-color: #b261e8;
+  background-color: #5b5c5e;
   color: white;
 }
 #reg{
   width: 48%;
   padding: 10px;
   border-radius: 30px;
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
   border: none;
   cursor: pointer;
@@ -351,23 +368,23 @@ button[type="submit"]:hover {
 }
 
 #reg:hover{
-  background-color: #b261e8;
+  background-color: #5b5c5e;
   color: white;
 }
 #addproducts{
   position: absolute;
-  left: 5%;
-  top: 5%;
+  left: 6%;
+  top: 15%;
   width: 10%;
   padding: 10px;
   border-radius: 20px;
   border: none;
-  background-color: blueviolet;
+  background-color: #222831;
   color: white;
   font-size: 15px;
 }
 #addproducts:hover{
-  background-color: #b261e8;
+  background-color: #5b5c5e;
   color: white;
   cursor: pointer;
 }
@@ -391,11 +408,11 @@ button[type="submit"]:hover {
   font-size: 20px;
   cursor: pointer;
   background-color: white;
-  color: blueviolet;
+  color: #222831;
   border: none;
 }
 /* .del-btn:hover{
-  background-color: #b261e8;
+  background-color: #5b5c5e;
   color: white;
 } */
 .edit-btn{
@@ -404,7 +421,7 @@ button[type="submit"]:hover {
   font-size: 20px;
   cursor: pointer;
   background-color: white;
-  color: blueviolet;
+  color: #222831;
   border: none;
 }
 /* Add column modal */
@@ -413,6 +430,20 @@ button[type="submit"]:hover {
   height: 100vh;
   padding: 0px;
 }
+.modal-dialog {
+  max-width: 50% !important;
+}
 #span{
   margin-left: 70%;
+}
+#columnSelectionForm{
+  display: block;
+}
+.form-check{
+  padding: 3px;
+}
+.btn-primary {
+  color: #fff;
+  background-color: #222831 !important;
+  border-color: #5b5c5e !important;
 }

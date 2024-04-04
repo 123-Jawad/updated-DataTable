@@ -1,6 +1,3 @@
-document.getElementById("registerBtn").addEventListener("click", function() {
-  window.location.href = "register.html";
-});
 
 document.getElementById("loginForm").addEventListener("submit", function(event) {
     event.preventDefault();
@@ -8,10 +5,17 @@ document.getElementById("loginForm").addEventListener("submit", function(event) 
     let password = document.getElementById("password").value;
     let storedUser = JSON.parse(localStorage.getItem("user"));
     if (storedUser && email === storedUser.email && password === storedUser.password) {
-      alert("Login successful.");
-      window.location.href = "index.html";
+      swal({
+        title: "Login Successfully!",
+        text: "You are redirected to main page!",
+        icon: "success",
+        timer: 2000, // Display the message for 2 seconds
+        buttons: false // Hide the "Close" button
+      }).then(() => {
+        window.location.href = "index.html";
+      });
     } else {
-      alert("Invalid email or password.");
+      swal("Error!", "Wrong Credential!", "error");
     }
   });
   

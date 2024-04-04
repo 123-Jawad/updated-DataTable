@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <title>Login</title>
   <style>
@@ -14,22 +15,45 @@
       margin: 0;
       padding: 0;
     }
+    #main-section{
+  background-image: url(new1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+#main-div{
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: hsla(120, 1%, 14%, 0.7);
+}
 
-    h1 {
-      text-align: center;
-      margin-top: 50px;
-      font-family: "Outfit", sans-serif;
-    }
 
-    form {
-      width: 300px;
-      margin: 0 auto;
-      background-color: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
+h1 {
+  text-align: center;
+  padding-top: 6rem;
+  margin: 0;
+  font-family: "Outfit", sans-serif;
+  color: white;
+  font-size: 35px;
+}
 
+form {
+  width: 30%;
+  background-color: #fff;
+  position: absolute;
+  left: 34%;
+  top: 25%;
+  padding: 25px;
+  height: 280px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
     label {
       display: block;
       margin-bottom: 5px;
@@ -48,12 +72,12 @@
 
     button[type="submit"],
     button#registerBtn {
-      width: 100%;
+      width: 35%;
       padding: 12px;
       border: none;
       border-radius: 20px;
-      margin: 15px 0px ;
-      background-color: blueviolet;
+      margin: 40px 150px 10px 150px;
+      background-color: #202224;
       color: #fff;
       cursor: pointer;
       font-family: "Outfit", sans-serif;
@@ -61,37 +85,34 @@
       transition: background-color 0.3s ease;
     }
 
-    button[type="submit"]:hover,
-    button#registerBtn:hover {
-      background-color: #b261e8;
+    button[type="submit"]:hover{
+      background-color: #3e3f41;
     }
 
-    button#registerBtn {
-      background-color: blueviolet;
-      margin-top: 10px;
-    }
-
-    button#registerBtn:hover {
-      background-color: #b261e8;
-    }
     ::placeholder{
       color: #C2C2C2;
+}
+#login-para{
+  font-size: 15px;
+  text-align: center;
 }
 
   </style>
 </head>
 <body>
+  <div id="main-section">
+    <div id="main-div">
   <h1>Login</h1>
   <form id="loginForm">
     <label for="email"></label>
     <input type="email" id="email" placeholder="Email" required><br>
     <label for="password"></label>
     <input type="password" id="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-    <button id="registerBtn">Register</button>
-
+    <button type="submit">Login</button><br>
+    <p id="login-para">Already have an account <br><span> <a href="register.html">Sign up</a> </span></p>
   </form>
-  
+</div>
+</div>
   <script src="login.js"></script>
 </body>
 </html>

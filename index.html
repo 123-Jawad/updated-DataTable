@@ -8,17 +8,15 @@
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap"
-      rel="stylesheet"
     />
     <link
       rel="stylesheet"
@@ -28,28 +26,29 @@
       referrerpolicy="no-referrer"
     />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="sorting.js"></script>
-    <script src="filter.js"></script>
-    <script src="addcolumn.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   </head>
 
   <body>
+    <h2 id="main-heading">Product Management</h2>
     <button id="addproducts">
       <i class="fa-solid fa-plus"></i>Add product
     </button>
     <div class="logout-register-button">
-      <button id="reg" onclick="register()">Register</button>
       <button id="log" onclick="logout()">Logout</button>
     </div>
     <div class="select-column">
-      <button type="button"
-      class="add-column"
-      data-toggle="modal"
-      data-target="#addColumnModal" id="addColumnBtn">Add Column</button>
+      <button
+        type="button"
+        class="add-column"
+        data-toggle="modal"
+        data-target="#addColumnModal"
+        id="addColumnBtn"
+      >
+        Add Column
+      </button>
     </div>
-    <div id="filter">
-    </div>
+    <div id="filter"></div>
     <div class="container">
       <table id="dataTable">
         <thead>
@@ -158,15 +157,15 @@
         <tbody class="tbody" id="tbody"></tbody>
       </table>
     </div>
-    <!-- Modal  -->
 
+    <!-- Modal for AddProducts  -->
     <div id="myModal" class="modal">
       <div class="modal-content">
         <span class="close">&times;</span>
         <form id="product-form">
-          <h1 style="text-align: center; margin-bottom: 5%">
+          <h4 style="text-align: center; margin-bottom: 5%">
             Put Your Data Here
-          </h1>
+          </h4>
           <label for="product-name">Product Name:</label>
           <input type="text" id="product-name" required /><br />
           <label for="product-id">ID:</label>
@@ -202,226 +201,8 @@
         </form>
       </div>
     </div>
-    <!-- Crud operation perform here -->
-    <script>
-      // global varaiable
-      let productData = [];
-      let productName = document.querySelector("#product-name");
-      let productId = document.querySelector("#product-id");
-      let productTitle = document.querySelector("#product-title");
-      let productDescription = document.querySelector("#product-description");
-      let productVendor = document.querySelector("#product-vendor");
-      let productInStock = document.querySelector("#in-stock");
-      let productBuyingPrice = document.querySelector("#buying-price");
-      let productSalePrice = document.querySelector("#sale-price");
-      let productPurchaseQuantity =
-        document.querySelector("#purchase-quantity");
-      let productType = document.querySelector("#product-type");
-      let productShippingRates = document.querySelector("#shipping-rates");
-      let productRefillLimit = document.querySelector("#refill-limit");
-      let productLocationAddress = document.querySelector(
-        "#product-location-address"
-      );
-      let addproduct = document.querySelector("#addproduct");
-      let updateproduct = document.querySelector("#updateproduct");
 
-      // global variable end
-      addproduct.onclick = function () {
-        addnewproducts();
-      };
-      if (localStorage.getItem("productData") != null) {
-        productData = JSON.parse(localStorage.getItem("productData"));
-      }
-      function addnewproducts() {
-        productData.push({
-          productname: productName.value,
-          productid: productId.value,
-          producttitle: productTitle.value,
-          productdescription: productDescription.value,
-          productvendor: productVendor.value,
-          productinstock: productInStock.value,
-          productbuyingprice: productBuyingPrice.value,
-          productsaleprice: productSalePrice.value,
-          productpurchasequantity: productPurchaseQuantity.value,
-          producttype: productType.value,
-          productshippingrates: productShippingRates.value,
-          productrefilllimit: productRefillLimit.value,
-          productlocationaddress: productLocationAddress.value,
-        });
-        let productString = JSON.stringify(productData);
-        localStorage.setItem("productData", productString);
-      }
-      // get the data from localstorage and display on page
-      let datatable = document.querySelector("#tbody");
-      function getDatafromLocal() {
-        datatable.innerHTML = "";
-        productData.forEach((data, index) => {
-          datatable.innerHTML += `<tr index =${index}>
-            <td class="selectoption">
-              <input type="checkbox" name="" id="check" />
-            </td>
-            <td>${data.productid}</td>
-            <td>${data.productname}</td>
-            <td>${data.producttitle}</td>
-            <td>${data.productdescription}</td>
-            <td>${data.productvendor}</td>
-            <td>${data.productinstock}</td>
-            <td>${data.productbuyingprice}</td>
-            <td>${data.productsaleprice}</td>
-            <td>${data.productpurchasequantity}</td>
-            <td>${data.producttype}</td>
-            <td>${data.productshippingrates}</td>
-            <td>${data.productrefilllimit}</td>
-            <td>${data.productlocationaddress}</td>
-            <td class="actions">
-                <button class="edit-btn"><i class="fa-solid fa-pencil"></i></button>
-                <button class="del-btn"><i class="fa-solid fa-trash"></i></button>
-            </td>
-          </tr>`;
-        });
-        // delete button code
-        let i;
-        let allDelbtn = document.querySelectorAll(".del-btn");
-        for (i = 0; i < allDelbtn.length; i++) {
-          allDelbtn[i].onclick = function () {
-            let tr = this.parentElement.parentElement;
-            let id = tr.getAttribute("index");
-            Swal.fire({
-              title: "Are you sure?",
-              text: "You won't be able to revert this!",
-              icon: "warning",
-              showCancelButton: true,
-              confirmButtonColor: "#3085d6",
-              cancelButtonColor: "#d33",
-              confirmButtonText: "Yes, delete it!",
-            }).then((result) => {
-              if (result.isConfirmed) {
-                productData.splice(id, 1);
-                localStorage.setItem(
-                  "productData",
-                  JSON.stringify(productData)
-                );
-                tr.remove();
-                Swal.fire({
-                  title: "Deleted!",
-                  text: "Your  has been deleted.",
-                  icon: "success",
-                });
-              }
-            });
-          };
-        }
-
-        // Edit code
-        let addprod = document.querySelector("#addproducts");
-        let allDataEdit = document.querySelectorAll(".edit-btn");
-        for (i = 0; i < allDataEdit.length; i++) {
-          allDataEdit[i].onclick = function () {
-            let tr = this.parentElement.parentElement;
-            let td = tr.getElementsByTagName("td");
-            let index = tr.getAttribute("index");
-            let id = td[1].innerHTML;
-            let name = td[2].innerHTML;
-            let title = td[3].innerHTML;
-            let description = td[4].innerHTML;
-            let vendor = td[5].innerHTML;
-            let instock = td[6].innerHTML;
-            let buyingprice = td[7].innerHTML;
-            let salesprice = td[8].innerHTML;
-            let purchasequantity = td[9].innerHTML;
-            let producttype = td[10].innerHTML;
-            let shippingrate = td[11].innerHTML;
-            let refilllimit = td[12].innerHTML;
-            let location = td[13].innerHTML;
-            addprod.click();
-            addproduct.disabled = true;
-            updateproduct.disabled = false;
-            productName.value = name;
-            productId.value = id;
-            productTitle.value = title;
-            productDescription.value = description;
-            productVendor.value = vendor;
-            productInStock.value = instock;
-            productBuyingPrice.value = buyingprice;
-            productSalePrice.value = salesprice;
-            productPurchaseQuantity.value = purchasequantity;
-            productType.value = producttype;
-            productShippingRates.value = shippingrate;
-            productRefillLimit.value = refilllimit;
-            productLocationAddress.value = location;
-
-            updateproduct.onclick = function () {
-              productData[index] = {
-                productname: productName.value,
-                productid: productId.value,
-                producttitle: productTitle.value,
-                productdescription: productDescription.value,
-                productvendor: productVendor.value,
-                productinstock: productInStock.value,
-                productbuyingprice: productBuyingPrice.value,
-                productsaleprice: productSalePrice.value,
-                productpurchasequantity: productPurchaseQuantity.value,
-                producttype: productType.value,
-                productshippingrates: productShippingRates.value,
-                productrefilllimit: productRefillLimit.value,
-                productlocationaddress: productLocationAddress.value,
-              };
-              localStorage.setItem("productData", JSON.stringify(productData));
-            };
-          };
-        }
-      }
-      getDatafromLocal();
-    </script>
-    <!-- Logout and Register button code -->
-    <script>
-      function logout() {
-        window.location.href = "login.html";
-      }
-      function register() {
-        window.location.href = "register.html";
-      }
-    </script>
-
-    <!-- Modal open and close code -->
-    <script>
-      // Get the modal element
-      var modal = document.getElementById("myModal");
-
-      // Get the button that opens the modal
-      var btn = document.getElementById("addproducts");
-
-      // Get the close icon element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-
-      // When the user clicks the button, open the modal
-      btn.onclick = function () {
-        modal.style.display = "block";
-      };
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
-        modal.style.display = "none";
-      };
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function (event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      };
-
-      // Form submission handling
-      // document.getElementById("productForm").onsubmit = function (event) {
-      //   event.preventDefault();
-      //   console.log("Form submitted!");
-      //   // Close the modal after form submission
-      //   modal.style.display = "none";
-      // };
-    </script>
-
-<!-- addcolumns Modal -->
-
+    <!-- Modal For Addcolumns -->
     <div class="modal" id="addColumnModal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -465,99 +246,25 @@
         </div>
       </div>
     </div>
-    <!-- the script of modal for addcolumns -->
-    <script>
-      document
-        .getElementById("addColumn")
-        .addEventListener("click", function () {
-          $("#addColumnModal").modal("show");
-        });
-    </script>
-    <script>
-      console.log("working");
 
-      $(document).ready(function () {
-        var headers = $("#dataTable th")
-          .not(":first")
-          .map(function () {
-            return $(this).text().trim().split("Filter")[0];
-          })
-          .get();
+    <!-- Crud operation perform here -->
+    <script src="crud.js"></script>
 
-        var form = $("#columnSelectionForm");
+    <!-- Logout Button -->
+    <script src="logout-btn.js"></script>
 
-        headers.forEach(function (header, index) {
-          form.append(
-            '<div class="form-check"><input class="form-check-input" type="checkbox" value="' +
-              (index + 2) +
-              '" id="column' +
-              (index + 1) +
-              '"><label class="form-check-label" for="column' +
-              (index + 1) +
-              '">' +
-              header +
-              "</label></div>"
-          );
-        });
-      });
+    <!-- Modal for addproduct and addcolumn -->
+    <script src="addproductmodal.js"></script>
+    <script src="addcolumn-modal-btn.js"></script>
+    <script src="addcolumnmodal.js"></script>
 
-      function selectColumns() {
-        var selectedColumns = [];
+    <!-- Sorting and Filtering script for Table -->
+    <script src="sorting.js"></script>
+    <script src="filter.js"></script>
 
-        $("#columnSelectionForm input:checked").each(function () {
-          selectedColumns.push($(this).val());
-        });
-
-        $("#dataTable th, #dataTable td").hide();
-
-        $("#dataTable th:nth-child(1), #dataTable td:nth-child(1)").show();
-
-        selectedColumns.forEach(function (colIndex) {
-          $(
-            "#dataTable th:nth-child(" +
-              colIndex +
-              "), #dataTable td:nth-child(" +
-              colIndex +
-              ")"
-          ).show();
-        });
-      }
-    </script>
-    <!-- Jquery link -->
+    <!-- Jquery and bootstrap link for Addcolumn Modal -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-    ></script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-      crossorigin="anonymous"
-    ></script>
-
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
   </body>
 </html>

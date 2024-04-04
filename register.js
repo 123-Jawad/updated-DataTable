@@ -1,6 +1,3 @@
-document.getElementById("loginBtn").addEventListener("click", function() {
-  window.location.href = "login.html";
-});
 
 document.getElementById("registerForm").addEventListener("submit", function(event) {
   event.preventDefault();
